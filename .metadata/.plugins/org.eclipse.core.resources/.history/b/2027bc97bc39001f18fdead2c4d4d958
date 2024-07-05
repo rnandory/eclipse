@@ -1,0 +1,23 @@
+package com.newlecture.code.struct;
+import com.newlecture.code.struct.*;
+
+public class App {
+
+	public static void main(String[] args) {
+//		Notice
+//		int id = 0;
+//		String title = null;
+//		String content = null;
+//		int hit = 0;
+				
+
+		input(notice);
+
+		print(notice);
+
+		hitUp(notice);
+	}
+
+	
+
+}

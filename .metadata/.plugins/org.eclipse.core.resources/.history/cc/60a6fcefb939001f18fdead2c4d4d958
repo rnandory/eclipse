@@ -1,0 +1,34 @@
+package com.newlecture.code.func;
+
+public class App4 {
+
+	static int id = 0;
+	static String title = null;
+	static String content = null;
+	static int hit = 0;
+
+	public static void main(String[] args) {
+
+		input(1, "제목", "내용", 0);
+
+		print(id, title, content, hit);
+
+		hit = hitUp(hit);
+	}
+
+	private static int hitUp(int hit) {
+		return ++hit;
+	}
+
+	private static void print(int id, String title, String content, int hit) {
+		System.out.printf("ID : %d, Title : %s, Content : %s, Hit : %d\n", id, title, content, hit);
+	}
+
+	private static void input(int id, String title, String content, int hit) {
+		App4.id = id;
+		App4.title = title;
+		App4.content = content;
+		App4.hit = hit;
+	}
+
+}

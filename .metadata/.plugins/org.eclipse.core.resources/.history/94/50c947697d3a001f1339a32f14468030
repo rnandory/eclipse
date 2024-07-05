@@ -1,0 +1,98 @@
+package com.newlecture.code.struct.exam;
+
+import java.io.IOException;
+
+public class App {
+
+	public static void main(String[] args) throws IOException {
+
+		Exam exam = new Exam();
+
+		EXIT_LOOP: while (true) {
+
+			clear();// 화면 지우고
+			// intro출력
+			int menu = inputMenu();
+
+			switch (menu) {
+			case 1: // 성적목록
+				clear();
+				print(exam);
+				break;
+			case 2: // 성적추가
+				clear();
+				set();
+				promptToContinue();
+				break;
+			case 3: // 성적출력
+				clear();
+				loadRecord();
+				promptToContinue(); // 화면전환용 임시프롬프트
+				break;
+			case 4: // 성적저장
+				clear();
+				saveRecord();
+				promptToContinue();
+				break;
+			case 5: // 종료
+				clear();
+				exit();
+				break EXIT_LOOP;
+			default:
+				System.out.println("오류 : 1~5까지의 값만 입력할 수 있습니다.");
+				promptToContinue();
+			}// swich
+		} // while
+	}// main
+
+	private static void set(Exam exam) {
+		exam.name = "홍길동";
+		exam.kor = 30;
+		exam.eng = 40;
+		exam.math = 50;
+	}
+
+	private static int inputMenu(int menu) {
+		return menu;
+	}
+
+	private static void print(Exam exam) {
+		System.out.printf("name:%s, kor:%d, eng:%d, math:%d", exam.name, exam.kor, exam.eng, exam.math);
+	}
+
+	private static void promptToContinue() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static void exit() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public static boolean isNumeric(String str) {
+		try {
+			Double.parseDouble(str);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+
+	public static void clear() {
+		try {
+			String operatingSystem = System.getProperty("os.name");
+			if (operatingSystem.contains("Windows")) {
+				ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "cls");
+				Process startProcess = pb.inheritIO().start();
+				startProcess.waitFor();
+			} else {
+				ProcessBuilder pb = new ProcessBuilder("clear");
+				Process startProcess = pb.inheritIO().start();
+				startProcess.waitFor();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+}

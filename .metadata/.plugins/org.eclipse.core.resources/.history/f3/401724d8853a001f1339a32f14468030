@@ -1,0 +1,8 @@
+package com.newlecture.code.struct.exam;
+
+public class Exam {
+	String name;
+	int kor;
+	int eng;
+	int math;
+}

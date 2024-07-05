@@ -1,0 +1,30 @@
+package com.newlecture.code.struct;
+
+public class App {
+
+	public static void main(String[] args) {
+
+		Notice notice;
+		
+		input(notice);
+
+		print(notice);
+
+		hitUp(notice);
+	}
+
+	private static void hitUp(Notice notice) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void print(Notice notice) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void input(Notice notice) {
+		// TODO Auto-generated method stub
+		
+	}
+}

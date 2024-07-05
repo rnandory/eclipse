@@ -1,0 +1,91 @@
+package com.newlecture.code.struct.exam;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) throws IOException {
+
+		Exam exam = new Exam();
+
+		EXIT_LOOP: while (true) {
+
+			clear();// 화면 지우고
+			// intro출력
+			int menu = inputMenu();
+
+			switch (menu) {
+			case 1: // 성적목록
+				clear();
+				print(exam);
+				break;
+			case 2: // 성적추가
+				clear();
+				set(exam);
+				pause();
+				break;
+			case 3: // 성적출력
+				clear();
+				print(exam);
+				pause(); // 화면전환용 임시프롬프트
+				break;
+			}// swich
+		} // while
+	}// main
+
+	static void set(Exam exam) {
+		exam.name = "홍길동";
+		exam.kor = 30;
+		exam.eng = 40;
+		exam.math = 50;
+	}
+
+	static int inputMenu() {
+		return 0;
+	}
+
+	static void print(Exam exam) {
+		System.out.printf("name:%s, kor:%d, eng:%d, math:%d", exam.name, exam.kor, exam.eng, exam.math);
+	}
+
+	static void pause() {
+		System.out.println();
+		System.out.println("────────────────────────────────────────────────────");
+		System.out.println("Press any key to continue>");
+
+		Scanner scan = new Scanner(System.in);
+		scan.nextLine();
+	}
+
+	static void exit() {
+		// TODO Auto-generated method stub
+
+	}
+
+	static boolean isNumeric(String str) {
+		try {
+			Double.parseDouble(str);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+
+	static void clear() {
+		try {
+			String operatingSystem = System.getProperty("os.name");
+			if (operatingSystem.contains("Windows")) {
+				ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "cls");
+				Process startProcess = pb.inheritIO().start();
+				startProcess.waitFor();
+			} else {
+				ProcessBuilder pb = new ProcessBuilder("clear");
+				Process startProcess = pb.inheritIO().start();
+				startProcess.waitFor();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+}

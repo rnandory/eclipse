@@ -1,0 +1,18 @@
+package com.newlecture.controller.exam;
+
+public class ArrayTest {
+
+	public static void main(String[] args) {
+
+		int a;
+		int[] x = new int[4];
+
+		{
+			int b = 1;
+
+		}
+		a = 1;
+
+	}
+
+}

@@ -1,0 +1,197 @@
+package com.newlecture.controller.exam;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/exam/list")
+public class List extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+// 출력 페이지 ===========================================================================================================
+		String view = """
+								<!DOCTYPE html>
+				<html lang="en">
+
+				<head>
+				  <meta charset="UTF-8">
+				  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+				  <title>Document</title>
+				</head>
+
+				<body>
+				  <section>
+				    <header>
+				      <div>%d page</div>
+				      <h1>성적출력</h1>
+				    </header>
+				    <table>
+				      <caption>성적출력</caption>
+				      <thead>
+				        <tr>
+				          <th>이름</th>
+				          <th>국어</th>
+				          <th>영어</th>
+				          <th>수학</th>
+				          <th>총점</th>
+				          <th>평균</th>
+				          <th>성적</th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				        %s
+				      </tbody>
+				    </table>
+				  </section>
+				</body>
+
+				</html>
+								""";
+		String row_format = """
+				<tr>
+				    <th>%s</th>
+				    <th>%d</th>
+				    <th>%d</th>
+				    <th>%d</th>
+				    <th>%d</th>
+				    <th>%.2f</th>
+				    <th>%s</th>
+				  </tr>
+				""";
+		StringBuilder rows = new StringBuilder();
+
+// =======================================================================================
+		int page = 1;
+
+		int[] kors = new int[6];
+
+		String name;
+		int kor, eng, math;
+		int total;
+		double avg;
+		String grade = "F";
+
+		FileInputStream fis = new FileInputStream("C:/res/data.csv");
+		Scanner scan = new Scanner(fis);
+
+//		System.out.printf("%d page\n", page);
+//		System.out.println("┌───────────────────────────────┐");
+//		System.out.println("│            성적출력           │");
+//		System.out.println("└───────────────────────────────┘");
+
+		scan.nextLine(); // 컬럼명 버리기
+
+//		System.out.println("이름\t국어\t영어\t수학\t총점\t평균\t성적");
+		// scan.nextLine();
+		// scan.nextLine();
+		// scan.nextLine();
+		// scan.nextLine();
+		// scan.nextLine();
+		// scan.nextLine();
+
+		for (int i = 0; scan.hasNextLine() && i < 6; i++) {
+
+			// -----------------------------
+			String line = scan.nextLine();
+			String[] tokens = line.split(",");
+			// System.out.printf("tokens:", Arrays.toString(tokens));
+
+			name = tokens[0];
+			// 문자열 토큰 값을 숫자로 변경
+			if (isNumeric(tokens[1]))
+				kor = Integer.parseInt(tokens[1]);
+			else
+				kor = 0;
+
+			// 유효성 검사
+			if (!(0 <= kor && kor <= 100))
+				kor = 0;
+
+			// ----------------------------------
+
+			// kor 성적 대입
+			// tokens 값이 숫자 형식이 아니라면 초기값을 0으로 한다.
+			if (!isNumeric(tokens[2]))
+				eng = 0;
+			else
+				eng = Integer.parseInt(tokens[2]);
+
+			// kor 값의 유효성 검사
+			if (!(0 <= eng && eng <= 100))
+				eng = 0;
+
+			// eng 성적 대입
+			// tokens 값이 숫자 형식이 아니라면 초기값을 0으로 한다.
+			if (!isNumeric(tokens[3]))
+				math = 0;
+			else
+				math = Integer.parseInt(tokens[3]);
+
+			// eng 값의 유효성 검사
+			if (!(0 <= math && math <= 100))
+				math = 0;
+
+			// 성적 계산
+			total = kor + eng + math;
+			avg = total / 3.0;
+
+			grade = "F";
+			if (90 <= avg)
+				grade = "A";
+			else if (80 <= avg)
+				grade = "B";
+			else if (70 <= avg)
+				grade = "C";
+			else if (60 <= avg)
+				grade = "D";
+			else if (50 <= avg)
+				grade = "E";
+			// else
+			// grade = "F";
+
+			kors[i] = kor;
+
+//			System.out.printf("%s\t%d\t%d\t%d\t%d\t%.2f\t%s\n", name, kor, eng, math, total, avg, grade);
+
+			String row = String.format(row_format, name, kor, eng, math, total, avg, grade);
+
+//			row = row.replace("이름", name);
+//			row = row.replace("국어", Integer.toString(kor));
+//			row = row.replace("영어", Integer.toString(eng));
+//			row = row.replace("수학", Integer.toString(math));
+//			row = row.replace("총점", Integer.toString(total));
+//			row = row.replace("평균", String.format("%.2f", avg));
+//			row = row.replace("성적", grade);
+
+//			System.out.println(i + " : ");
+//			System.out.println(row);
+
+			rows.append(row);
+		}
+		// System.out.println();
+		System.out.println(Arrays.toString(kors));
+
+		scan.close();
+		fis.close();
+
+// 출력화면 ===================================================================================
+		request.getRequestDispatcher("list").forward(request, response);
+	}
+
+	public static boolean isNumeric(String str) {
+		try {
+			Double.parseDouble(str);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+}
