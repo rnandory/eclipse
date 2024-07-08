@@ -3,4 +3,7 @@
     <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="com.newlecture.code.func.App4"/>
+    <fullyQualifiedTypeName name="com.newlecture.code.struct.Notice"/>
+    <fullyQualifiedTypeName name="com.newlecture.code.struct.exam.Exam"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>

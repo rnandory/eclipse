@@ -130,11 +130,6 @@
       </Realm>
 
       <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
-
-
-          <!--http://localhost:8080/pub/.. pub 디렉토리 문서-->
-          <!--http://localhost:8080/... root디렉토리 문서 -->
-          <!-- privileged : root랑 독립적?-->
           
 
         <!-- SingleSignOn valve, share authentication between web applications
