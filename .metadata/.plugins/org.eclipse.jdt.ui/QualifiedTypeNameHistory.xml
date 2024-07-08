@@ -6,4 +6,5 @@
     <fullyQualifiedTypeName name="com.newlecture.code.struct.Notice"/>
     <fullyQualifiedTypeName name="com.newlecture.code.struct.exam.Exam"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServlet"/>
 </qualifiedTypeNameHistroy>
