@@ -131,6 +131,10 @@
 
       <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
           
+          <!-- http://localhost(ip):8080/... -->
+          <!-- http://localhost(ip):8080/html/.. -->
+            
+     // 별개의 docBase 위치의 문서위치를 &quot;html&quot;이라는 이름으로 context 실행, 즉 분기점 생성 or 특권 부여
 
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->

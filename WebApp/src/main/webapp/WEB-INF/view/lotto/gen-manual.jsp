@@ -11,18 +11,25 @@
 		<h1>수동발권</h1>
 
 		<div>
-			<form>
+			<form method="POST">
 				<div>※1~45 숫자 범위에서 원하는 번호를 스페이스를 구분자로 6개 입력하세요. 숫자는 정렬되어 있지
 					않아도 상관없다※</div>
 
 				<div>
-					<label>번호&gt;</label><input>
+					<label>번호&gt;</label>
+					<input name="lotto_">
 				</div>
 
 				<div>
 					<button>전송</button>
 				</div>
-			</form>
+			</form>			
+			
+			<% boolean input = ${input}; %>
+			<% if (input) { %>
+			<div>입력한 번호 : ${lottoSorted_}</div>
+			<% } %>
+			
 			<div>
 				<a href="menu">메뉴로가기</a>
 			</div>
