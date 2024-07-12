@@ -6,5 +6,10 @@
     <fullyQualifiedTypeName name="com.newlecture.code.struct.exam.Exam"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="com.newlecture.code.oop.lotto.LottoService"/>
+    <fullyQualifiedTypeName name="com.newlecture.code.oop.lotto.NamedLotto"/>
+    <fullyQualifiedTypeName name="com.newlecture.code.oop.lotto.App"/>
+    <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.parser.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
 </qualifiedTypeNameHistroy>

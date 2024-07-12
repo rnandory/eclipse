@@ -25,10 +25,9 @@
 				</div>
 			</form>			
 			
-			<% boolean input = ${input}; %>
-			<% if (input) { %>
+			
 			<div>입력한 번호 : ${lottoSorted_}</div>
-			<% } %>
+			
 			
 			<div>
 				<a href="menu">메뉴로가기</a>
