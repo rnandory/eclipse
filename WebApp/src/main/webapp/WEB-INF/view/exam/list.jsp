@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +29,10 @@
 				</tr>
 			</thead>
 			<tbody>
+			
+			<c:forEach begin="0" end="5">
 				<tr>
-					<td><a href="/exam/detail">강호동</a></td>
+					<td><a href="/exam/detail">${list[1].name}</a></td>
 					<td>0</td>
 					<td>80</td>
 					<td>30</td>
@@ -37,16 +40,13 @@
 					<td>36.67</td>
 					<td>F</td>
 				</tr>
-				<%
-				for (int i = 0; i < 6; i++) {
-				%>
+				
 				<tr>
-					<td><a href="/exam/detail">강호동</a></td>
-					<td>${kors[1]}</td>
+					<td><a href="/exam/detail"><%-- <%= exams[i].getName() %> --%></a></td>
+					<td></td> 
 				</tr>
-				<%
-				}
-				%>
+			</c:forEach>
+								
 			</tbody>
 		</table>
 	</section>
